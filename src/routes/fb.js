@@ -54,7 +54,7 @@ function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
         FB.api(
-            "/280840585655132",
+            "/280840585655132/feed",
             function (response) {
               if (response && !response.error) {
                 console.log(response);
