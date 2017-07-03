@@ -10,5 +10,8 @@
     "promise": "^8.0.0",
     "redis": "^2.7.1",
     "socket.io": "^2.0.3"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }
