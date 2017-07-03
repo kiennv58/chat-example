@@ -53,6 +53,7 @@ function whGet(req, res) {
 function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
+        FB.setAccessToken(WK_VERIFY_TOKEN);
         FB.api("/280840585655132/feed", function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
