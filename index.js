@@ -25,32 +25,32 @@ FB.options({
 
 // Mysql configuration
 // --------------------------------------------------------------------------------------------------------------
-var MYSQL;
-function handleMySqlDisconnect() {
-    MYSQL = mysql.createConnection({
-        host: process.env.MYSQL_HOST,
-        user: process.env.MYSQL_USER,
-        password: process.env.MYSQL_PWD,
-        database: process.env.MYSQL_DB
-    });
+// var MYSQL;
+// function handleMySqlDisconnect() {
+//     MYSQL = mysql.createConnection({
+//         host: process.env.MYSQL_HOST,
+//         user: process.env.MYSQL_USER,
+//         password: process.env.MYSQL_PWD,
+//         database: process.env.MYSQL_DB
+//     });
 
-    MYSQL.connect(function (err) {
-        if (err) {
-            console.log('error when connecting to mysql:', err);
-            setTimeout(handleMySqlDisconnect, 2000);
-        }
-    });
+//     MYSQL.connect(function (err) {
+//         if (err) {
+//             console.log('error when connecting to mysql:', err);
+//             setTimeout(handleMySqlDisconnect, 2000);
+//         }
+//     });
 
-    MYSQL.on('error', function (err) {
-        console.log('mysql error', err);
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            handleMySqlDisconnect();
-        } else {
-            throw err;
-        }
-    });
-}
-handleMySqlDisconnect();
+//     MYSQL.on('error', function (err) {
+//         console.log('mysql error', err);
+//         if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+//             handleMySqlDisconnect();
+//         } else {
+//             throw err;
+//         }
+//     });
+// }
+// handleMySqlDisconnect();
 
 //--------------------------------------------------------------------
 
