@@ -1,10 +1,11 @@
+require('dotenv').config();
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mysql = require('mysql');
 var xhub       = require('express-x-hub');
 const request = require('promise');
-require('dotenv').config()
+
 
 // const APP_KEY                      = process.env.APP_KEY;
 // const APP_SECRET                   = process.env.APP_SECRET;
