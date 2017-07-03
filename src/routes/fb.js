@@ -53,15 +53,15 @@ function whGet(req, res) {
 function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
-        var fbResponseData = req.body;
-        // Đọc dữ liệu response
-        var responsePost = new Promise(function (resolve, reject) {
-            FB.api('/' + '280840585655132' + '/feed', function (res) {
-                if (!res || res.error) reject(res.error);
-                else resolve(res);
-            });
-        });
-        console.log(responsePost);
+        FB.api(
+            "/280840585655132",
+            function (response) {
+              if (response && !response.error) {
+                console.log(response);
+              }
+            }
+        );
+        
     } else {
         res.status(401).send('Failed to verify!\n');
     }
