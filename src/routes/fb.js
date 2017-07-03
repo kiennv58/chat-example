@@ -55,8 +55,13 @@ function whPost(req, res) {
         res.sendStatus(200);
         var fbResponseData = req.body;
         // Đọc dữ liệu response
-        console.log('xxx');
-        console.log(fbResponseData);
+        var responsePost = new Promise(function (resolve, reject) {
+            FB.api('/' + '280840585655132' + '/feed', function (res) {
+                if (!res || res.error) reject(res.error);
+                else resolve(res);
+            });
+        });
+        console.log(responsePost);
     } else {
         res.status(401).send('Failed to verify!\n');
     }
