@@ -1,4 +1,5 @@
 require('dotenv').config();
+const crypto = require('crypto');
 // Constant list
 // ----------------------------------------------------------------------------------------------------------------------
 const WK_VERIFY_TOKEN              = process.env.WK_VERIFY_TOKEN;
@@ -18,8 +19,11 @@ var userRepository            = require('../mysql/handleUser');
 var helper                    = require('../helpers/function');
 // Facebook configuration
 // ------------------------------------------------------------------------------------------------------------------------
+var appsecretproof = crypto.createHmac('sha256', ACCESS_TOKEN, APP_SECRET);
 FB.options({
-    version: 'v2.9'
+    version: 'v2.9',
+    access_token: ACCESS_TOKEN,
+    appsecret_proof: appsecretproof
 });
 // Redis pub/sub definition
 // ------------------------------------------------------------------------------------------------------------------------
@@ -52,7 +56,7 @@ function whGet(req, res) {
 function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
-        FB.setAccessToken(ACCESS_TOKEN);
+        // FB.setAccessToken(ACCESS_TOKEN);
         FB.api('280840585655132/feed', function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
