@@ -2,6 +2,7 @@ require('dotenv').config();
 // Constant list
 // ----------------------------------------------------------------------------------------------------------------------
 const WK_VERIFY_TOKEN              = process.env.WK_VERIFY_TOKEN;
+const ACCESS_TOKEN              = process.env.ACCESS_TOKEN;
 const PUBSUB_CHANNEL               = process.env.PUBSUB_CHANNEL;
 const APP_KEY                      = process.env.APP_KEY;
 const APP_SECRET                   = process.env.APP_SECRET;
@@ -18,9 +19,7 @@ var helper                    = require('../helpers/function');
 // Facebook configuration
 // ------------------------------------------------------------------------------------------------------------------------
 FB.options({
-    version: 'v2.7',
-    appId: APP_KEY,
-    appSecret: APP_SECRET
+    version: 'v2.9'
 });
 // Redis pub/sub definition
 // ------------------------------------------------------------------------------------------------------------------------
@@ -53,6 +52,7 @@ function whGet(req, res) {
 function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
+        FB.setAccessToken(ACCESS_TOKEN);
         FB.api('280840585655132/feed', function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
