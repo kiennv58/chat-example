@@ -3,10 +3,11 @@ const crypto = require('crypto');
 // Constant list
 // ----------------------------------------------------------------------------------------------------------------------
 const WK_VERIFY_TOKEN              = process.env.WK_VERIFY_TOKEN;
-const ACCESS_TOKEN              = process.env.ACCESS_TOKEN;
+const ACCESS_TOKEN                 = process.env.ACCESS_TOKEN;
 const PUBSUB_CHANNEL               = process.env.PUBSUB_CHANNEL;
 const APP_KEY                      = process.env.APP_KEY;
 const APP_SECRET                   = process.env.APP_SECRET;
+const GROUP_ID                     = process.env.GROUP_ID;
 // Dependency definition
 // ------------------------------------------------------------------------------------------------------------------------
 var Promise                   = require('promise');
@@ -59,7 +60,7 @@ function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
         // FB.setAccessToken(ACCESS_TOKEN);
-        FB.api('/280840585655132/feed?limit=1&access_token=' + ACCESS_TOKEN, function (res) {
+        FB.api('/' + GROUP_ID + '/feed?limit=1&access_token=' + ACCESS_TOKEN, function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
            return;
