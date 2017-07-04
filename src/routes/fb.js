@@ -55,7 +55,7 @@ function whPost(req, res) {
     // console.log(req);
     // console.log(req.header);
     console.log('headers: ' + req.headers.field);
-    // console.log(req.body);
+    console.log(req.body);
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
         // FB.setAccessToken(ACCESS_TOKEN);
