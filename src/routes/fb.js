@@ -54,12 +54,12 @@ function whGet(req, res) {
 function whPost(req, res) {
     // console.log(req);
     // console.log(req.header);
-    console.log('headers: ' + req.headers.field);
+    // console.log('headers: ' + req.headers.field);
     console.log(req.body);
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
-        // FB.setAccessToken(ACCESS_TOKEN);
-        FB.api('280840585655132/feed?fields=from,story,comments&access_token=' + ACCESS_TOKEN, function (res) {
+        FB.setAccessToken(ACCESS_TOKEN);
+        FB.api('/280840585655132/feed?limit=1', function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
            return;
