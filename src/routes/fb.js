@@ -58,8 +58,8 @@ function whPost(req, res) {
     console.log(req.body);
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
-        FB.setAccessToken(ACCESS_TOKEN);
-        FB.api('/280840585655132/feed?limit=1', function (res) {
+        // FB.setAccessToken(ACCESS_TOKEN);
+        FB.api('/280840585655132/feed?limit=1&access_token=' + ACCESS_TOKEN, function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
            return;
