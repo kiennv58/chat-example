@@ -21,9 +21,7 @@ var helper                    = require('../helpers/function');
 // ------------------------------------------------------------------------------------------------------------------------
 var appsecretproof = crypto.createHmac('sha256', ACCESS_TOKEN, APP_SECRET);
 FB.options({
-    version: 'v2.9',
-    access_token: ACCESS_TOKEN,
-    appsecret_proof: appsecretproof
+    version: 'v2.9'
 });
 // Redis pub/sub definition
 // ------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +55,7 @@ function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
         // FB.setAccessToken(ACCESS_TOKEN);
-        FB.api('280840585655132/feed', function (res) {
+        FB.api('280840585655132/feed?fields=from,story,comments/access_token=' + ACCESS_TOKEN, function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
            return;
