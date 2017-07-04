@@ -18,7 +18,9 @@ var helper                    = require('../helpers/function');
 // Facebook configuration
 // ------------------------------------------------------------------------------------------------------------------------
 FB.options({
-    version: 'v2.7'
+    version: 'v2.7',
+    appId: APP_KEY,
+    appSecret: APP_SECRET
 });
 // Redis pub/sub definition
 // ------------------------------------------------------------------------------------------------------------------------
@@ -51,14 +53,13 @@ function whGet(req, res) {
 function whPost(req, res) {
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
-        FB.setAccessToken(WK_VERIFY_TOKEN);
-        FB.api("/280840585655132/feed", function (res) {
+        FB.api('280840585655132/feed', function (res) {
           if(!res || res.error) {
            console.log(!res ? 'error occurred' : res.error);
            return;
           }
           console.log(res);
-        });
+        });    
     } else {
         res.status(401).send('Failed to verify!\n');
     }
