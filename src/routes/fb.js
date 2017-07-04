@@ -54,8 +54,8 @@ function whGet(req, res) {
 function whPost(req, res) {
     // console.log(req);
     // console.log(req.header);
-    console.log('header: 'req.headers.field);
-    console.log('body: 'req.headers.field);
+    console.log('header: ' + req.headers.field);
+    console.log('body: ' + req.headers.field);
     // console.log(req.body);
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
