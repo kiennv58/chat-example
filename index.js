@@ -87,6 +87,9 @@ app.use(bodyParser.json());
 app.route('/fbwh')
     .get(fbRoutes.get)
     .post(fbRoutes.post);
+app.get('/policies/privacy', function(req, res){
+  res.sendFile(__dirname + '/privacy.html');
+});
 
 // app.use('/statistic-total-users', statisticTotalUsersRouter);
 // Server listening
@@ -95,9 +98,7 @@ http.listen(PORT, function () {
     console.log('Rapian instant message running on port ' + PORT);
 });
 
-// app.get('/', function(req, res){
-//   res.sendFile(__dirname + '/index.html');
-// });
+
 
 // http.listen(process.env.PORT || 3000);
 
