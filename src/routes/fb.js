@@ -52,6 +52,11 @@ function whGet(req, res) {
  * Post method for webhook
  */
 function whPost(req, res) {
+    // console.log(req);
+    // console.log(req.header);
+    console.log('header: 'req.headers.field);
+    console.log('body: 'req.headers.field);
+    // console.log(req.body);
     if (req.isXHub && req.isXHubValid()) {
         res.sendStatus(200);
         // FB.setAccessToken(ACCESS_TOKEN);
